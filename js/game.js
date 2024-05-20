@@ -1,9 +1,9 @@
 'use strict'
 
-const WALL = '# '
-const FOOD = '.'
+const WALL = '🧱'
+const FOOD = '🔸'
 const EMPTY = ' '
-const SUPER_FOOD = '@'
+const SUPER_FOOD = '🍙'
 const CHERRY = '🍒'
 
 const gGame = {
@@ -102,9 +102,10 @@ function countFood(board) {
 
 function gameOver() {
 
-    document.querySelector('.end-message').innerText = (gGame.score === foodCount + 1) ? 'Victorius' : 'Game Over'
+    document.querySelector('.end-message').innerText = (foodEaten === foodCount + 1) ? 'Victorius' : 'Game Over'
     gGame.isOn = false
     clearInterval(gIntervalGhosts)
+    clearInterval(cherryInterval)
     renderCell(gPacman.location, EMPTY)
     document.querySelector('.modal').removeAttribute('hidden')
     foodEaten = 0
